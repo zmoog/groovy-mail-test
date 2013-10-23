@@ -1,0 +1,24 @@
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.0.5'
+    compile 'javax.mail:mail:1.4.4'
+}
+
+task runReader (dependsOn: 'classes', type: JavaExec) {
+    main = 'Reader'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runSender (dependsOn: 'classes', type: JavaExec) {
+    main = 'Sender'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.8'
+}
